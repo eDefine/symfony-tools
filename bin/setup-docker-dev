@@ -9,4 +9,4 @@ echo ""
 composer install
 yarn install
 
-bash bin/rebuild.sh --frontend --env dev
+bash "$(dirname "$0")/rebuild" --frontend --env dev

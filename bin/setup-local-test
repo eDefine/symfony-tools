@@ -28,4 +28,4 @@ httpd_user=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]g
 sudo setfacl -dR -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
 sudo setfacl -R -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
 
-bash bin/rebuild.sh --frontend --env test
+bash "$(dirname "$0")/rebuild" --frontend --env test
