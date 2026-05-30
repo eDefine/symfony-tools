@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-cd "${0%/*}/.." || exit
+#cd "${0%/*}/.." || exit
 
 echo "Setup started at $(date)"
 echo ""
@@ -9,4 +9,4 @@ echo ""
 composer install
 yarn install
 
-bash bin/rebuild.sh --frontend --env dev
+bash bin/rebuild.sh --frontend --env test

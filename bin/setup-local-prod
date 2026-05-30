@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-cd "${0%/*}/.." || exit
+#cd "${0%/*}/.." || exit
 
 config_file="symfony-tools.ini"
 if [[ ! -e "$config_file" ]]; then
@@ -21,11 +21,11 @@ echo ""
 
 mkdir -p $SETUP_WRITABLE_DIRS
 
-composer install
+composer install --no-dev
 yarn install
 
 httpd_user=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
 sudo setfacl -dR -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
 sudo setfacl -R -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
 
-bash bin/rebuild.sh --frontend --env dev
+bash bin/rebuild.sh --frontend --env prod
