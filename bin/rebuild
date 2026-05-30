@@ -21,7 +21,7 @@ function usage() {
   echo "Usage:"
   echo "  $0 [options]"
   echo ""
-  echo "Analysis Options:"
+  echo "Rebuild Options:"
   echo "  -e|--env ENV  Run rebuild for given environment (default: dev)"
   echo "  -f|--frontend Rebuilds frontend"
   echo ""
