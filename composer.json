@@ -1,0 +1,13 @@
+{
+  "name": "edefine/symfony-tools",
+  "description": "Tools for Symfony projects.",
+  "license": "MIT",
+  "type": "library",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.0"
+  },
+  "bin": [
+    "bin/rebuild"
+  ]
+}
