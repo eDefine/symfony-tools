@@ -8,6 +8,11 @@
     "php": ">=8.0"
   },
   "bin": [
-    "bin/rebuild"
+    "bin/rebuild",
+    "bin/setup-dev-docker",
+    "bin/setup-dev-local",
+    "bin/setup-prod-local",
+    "bin/setup-test-docker",
+    "bin/setup-test-local"
   ]
 }

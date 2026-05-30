@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+cd "${0%/*}/.." || exit
+
+config_file="symfony-tools.ini"
+if [[ ! -e "$config_file" ]]; then
+  echo "Config file $config_file does not exist"
+  exit 1
+fi
+
+source "$config_file"
+
+if [[ -z "$SETUP_WRITABLE_DIRS" ]]; then
+  echo "SETUP_WRITABLE_DIRS is not set in $config_file"
+  exit 1
+fi
+
+echo "Setup started at $(date)"
+echo ""
+
+mkdir -p $SETUP_WRITABLE_DIRS
+
+composer install
+yarn install
+
+httpd_user=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
+sudo setfacl -dR -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
+sudo setfacl -R -m u:"$httpd_user":rwX -m u:$(whoami):rwX $SETUP_WRITABLE_DIRS
+
+bash bin/rebuild.sh --frontend --env dev

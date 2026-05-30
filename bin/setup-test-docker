@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+cd "${0%/*}/.." || exit
+
+echo "Setup started at $(date)"
+echo ""
+
+composer install
+yarn install
+
+bash bin/rebuild.sh --frontend --env test
