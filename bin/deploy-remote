@@ -22,8 +22,8 @@ user_and_host="$1"
 directory="$2"
 
 branch="master"
-if [[ -v 1 ]]; then
-  branch="$1"
+if [[ -v 3 ]]; then
+  branch="$3"
 fi
 
 function step_label() {
