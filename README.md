@@ -13,10 +13,6 @@ cp vendor/edefine/symfony-tools/symfony-tools.ini.dist symfony-tools.ini
 nano symfony-tools.ini
 ```
 
-```ini
-SETUP_WRITABLE_DIRS="var/log var/cache" # Directories to which web server should have writable access
-```
-
 ## bin/setup-file-permissions
 
 Sets up file permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
@@ -47,4 +43,15 @@ Rebuild Options:
 
 Miscellaneous Options:
   -u|--usage    Output this message
+```
+
+## bin/deploy-local
+
+Runs local deploy on production server.
+
+Pass branch name or tag as an argument. Otherwise, "master" will be deployed.
+
+Usage:
+```shell
+bin/deploy-local user directory [branch or tag]
 ```

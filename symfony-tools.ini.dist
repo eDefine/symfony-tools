@@ -1,4 +1,1 @@
-DEPLOY_LOCAL_DIR="/var/www/project"
-DEPLOY_LOCAL_USER="johndoe"
-
-SETUP_WRITABLE_DIRS="var/log var/cache"
+SETUP_WRITABLE_DIRS="var/log var/cache" # Directories to which web server should have writable access
