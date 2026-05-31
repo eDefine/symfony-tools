@@ -1,1 +1,0 @@
-SETUP_WRITABLE_DIRS="var/log var/cache" # Directories to which web server should have writable access

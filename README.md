@@ -6,14 +6,9 @@
 composer require edefine/symfony-tools
 ```
 
-## Configuration
+## Tools
 
-```shell
-cp vendor/edefine/symfony-tools/symfony-tools.ini.dist symfony-tools.ini
-nano symfony-tools.ini
-```
-
-## bin/setup-file-permissions
+### bin/setup-file-permissions
 
 Sets up file permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
 
@@ -21,7 +16,7 @@ Sets up file permissions to writable directories (**SETUP_WRITABLE_DIRS** from c
 bin/setup-file-permissions
 ```
 
-## bin/rebuild
+### bin/rebuild
 
 Rebuilds local instance:
 1. Drops schema (full database)
@@ -45,7 +40,7 @@ Miscellaneous Options:
   -u|--usage    Output this message
 ```
 
-## bin/deploy-local
+### bin/deploy-local
 
 Runs local deploy on production server.
 
@@ -56,7 +51,7 @@ Usage:
 bin/deploy-local user directory [branch or tag]
 ```
 
-## bin/deploy-remote
+### bin/deploy-remote
 
 Runs remote deploy to production server.
 
