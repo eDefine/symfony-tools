@@ -17,13 +17,12 @@ nano symfony-tools.ini
 SETUP_WRITABLE_DIRS="var/log var/cache" # Directories to which web server should have writable access
 ```
 
-## bin/setup
+## bin/setup-file-permissions
 
-Sets up the environment:
-1. Sets correct permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
+Sets up file permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
 
 ```shell
-bin/setup
+bin/setup-file-permissions
 ```
 
 ## bin/rebuild

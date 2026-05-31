@@ -9,6 +9,6 @@
   },
   "bin": [
     "bin/rebuild",
-    "bin/setup"
+    "bin/setup-file-permissions"
   ]
 }
