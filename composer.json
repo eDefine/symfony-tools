@@ -9,10 +9,6 @@
   },
   "bin": [
     "bin/rebuild",
-    "bin/setup-docker-dev",
-    "bin/setup-docker-test",
-    "bin/setup-local-dev",
-    "bin/setup-local-prod",
-    "bin/setup-local-test"
+    "bin/setup"
   ]
 }

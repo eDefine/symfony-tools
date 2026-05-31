@@ -1,5 +1,31 @@
 # eDefine Symfony Tools
 
+## Installation
+
+```shell
+composer require edefine/symfony-tools
+```
+
+## Configuration
+
+```shell
+cp vendor/edefine/symfony-tools/symfony-tools.ini.dist symfony-tools.ini
+nano symfony-tools.ini
+```
+
+```ini
+SETUP_WRITABLE_DIRS="var/log var/cache" # Directories to which web server should have writable access
+```
+
+## bin/setup
+
+Sets up the environment:
+1. Sets correct permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
+
+```shell
+bin/setup
+```
+
 ## bin/rebuild
 
 Rebuilds local instance:
