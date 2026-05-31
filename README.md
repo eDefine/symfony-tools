@@ -10,10 +10,10 @@ composer require edefine/symfony-tools
 
 ### bin/setup-file-permissions
 
-Sets up file permissions to writable directories (**SETUP_WRITABLE_DIRS** from config)
+Sets up writable file permissions (via ACLs) for the given directories, granting read/write access to both the web-server user and the current user.
 
 ```shell
-bin/setup-file-permissions
+bin/setup-file-permissions directory...
 ```
 
 ### bin/rebuild
@@ -59,5 +59,5 @@ Pass branch name or tag as a third argument. Otherwise, "master" will be deploye
 
 Usage:
 ```shell
-bin/deploy-local user@host directory [branch or tag]
+bin/deploy-remote user@host directory [branch or tag]
 ```

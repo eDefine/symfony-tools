@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 #cd "${0%/*}/.." || exit
 
 echo "Setup started at $(date)"
@@ -16,10 +16,17 @@ if [[ ! -v 1 ]]; then
   exit 1
 fi
 
-directories="$@"
+directories=("$@")
 
-mkdir -p $directories
+mkdir -p "${directories[@]}"
 
-httpd_user=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
-sudo setfacl -dR -m u:"$httpd_user":rwX -m u:$(whoami):rwX $directories
-sudo setfacl -R -m u:"$httpd_user":rwX -m u:$(whoami):rwX $directories
+httpd_user=$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1 || true)
+
+if [[ -z "$httpd_user" ]]; then
+  echo "Could not detect a web-server user (apache/httpd/www/www-data/nginx). Is it running?" >&2
+  exit 1
+fi
+
+current_user=$(whoami)
+sudo setfacl -dR -m u:"$httpd_user":rwX -m u:"$current_user":rwX "${directories[@]}"
+sudo setfacl -R -m u:"$httpd_user":rwX -m u:"$current_user":rwX "${directories[@]}"

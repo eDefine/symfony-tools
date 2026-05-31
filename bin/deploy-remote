@@ -31,7 +31,7 @@ function step_label() {
 }
 
 function server_command() {
-  ssh -t -o LogLevel=QUIET "${user_and_host}" "cd $directory && $1" | sed "s/^/    /g"
+  ssh -t -o LogLevel=QUIET "${user_and_host}" "cd \"$directory\" && $1" | sed "s/^/    /g"
   echo ""
 }
 
@@ -49,13 +49,13 @@ start_time=$(date +%s)
 echo "Deploying branch ${branch}"
 
 step_label 1 "Fetching changes"
-server_command "git fetch"
+server_command "git fetch --tags --prune"
 
 step_label 2 "Changing branch"
 server_command "git checkout ${branch}"
 
 step_label 3 "Resetting branch"
-server_command "git reset --hard origin/${branch}"
+server_command "git reset --hard origin/${branch} 2>/dev/null || git reset --hard ${branch}"
 
 step_label 4 "Updating composer"
 server_command "composer install --no-dev"
