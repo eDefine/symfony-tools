@@ -9,6 +9,7 @@
   },
   "bin": [
     "bin/deploy-local",
+    "bin/deploy-remote",
     "bin/rebuild",
     "bin/setup-file-permissions"
   ]

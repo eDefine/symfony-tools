@@ -49,9 +49,20 @@ Miscellaneous Options:
 
 Runs local deploy on production server.
 
-Pass branch name or tag as an argument. Otherwise, "master" will be deployed.
+Pass branch name or tag as a third argument. Otherwise, "master" will be deployed.
 
 Usage:
 ```shell
 bin/deploy-local user directory [branch or tag]
+```
+
+## bin/deploy-remote
+
+Runs remote deploy to production server.
+
+Pass branch name or tag as a third argument. Otherwise, "master" will be deployed.
+
+Usage:
+```shell
+bin/deploy-local user@host directory [branch or tag]
 ```
