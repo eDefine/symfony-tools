@@ -8,6 +8,7 @@
     "php": ">=8.0"
   },
   "bin": [
+    "bin/deploy-local",
     "bin/rebuild",
     "bin/setup-file-permissions"
   ]
