@@ -59,7 +59,7 @@ echo ""
 start_time=$(date +%s)
 
 step_label 1 "Removing artifacts"
-local_command "rm var/log/*"
+local_command "rm -rf  var/log/*"
 
 step_label 2 "Dropping schema"
 local_command "php bin/console doctrine:schema:drop --ansi --env $env --full-database --force"
