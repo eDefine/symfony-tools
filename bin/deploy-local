@@ -44,7 +44,7 @@ step_label 1 "Fetching changes"
 local_command "git fetch --tags --prune"
 
 step_label 2 "Changing branch"
-local_command "git checkout ${branch}"
+local_command "git checkout -f ${branch}"
 
 step_label 3 "Resetting branch"
 local_command "git reset --hard origin/${branch} 2>/dev/null || git reset --hard ${branch}"
@@ -56,7 +56,7 @@ step_label 5 "Optimizing autoloader"
 local_command "composer dump-autoload --no-dev --classmap-authoritative --optimize"
 
 step_label 6 "Updating yarn"
-local_command "yarn install"
+local_command "yarn install --frozen-lockfile"
 
 step_label 7 "Rebuilding"
 local_command "vendor/bin/rebuild --frontend --env prod"

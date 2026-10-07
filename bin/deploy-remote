@@ -52,7 +52,7 @@ step_label 1 "Fetching changes"
 server_command "git fetch --tags --prune"
 
 step_label 2 "Changing branch"
-server_command "git checkout ${branch}"
+server_command "git checkout -f ${branch}"
 
 step_label 3 "Resetting branch"
 server_command "git reset --hard origin/${branch} 2>/dev/null || git reset --hard ${branch}"
@@ -64,7 +64,7 @@ step_label 5 "Optimizing autoloader"
 server_command "composer dump-autoload --no-dev --classmap-authoritative --optimize"
 
 step_label 6 "Updating yarn"
-server_command "yarn install"
+server_command "yarn install --frozen-lockfile"
 
 step_label 7 "Rebuilding"
 server_command "vendor/bin/rebuild --frontend --env prod"
